@@ -125,14 +125,6 @@ def human_move(board):
     return move
 
 
-def evaluate(board):
-    if winner(board)==computer:
-        moveScore=1
-    elif winner(board)==human:
-        moveScore=-1
-    elif winner(board)==TIE:
-        moveScore=0
-    return moveScore        
 
 def computerMove(board,computer,human):
     """gets computers move"""
