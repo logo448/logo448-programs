@@ -4,21 +4,22 @@
 #Tic Tac Toe
 
 #global constants
-X="x"
-O="O"
-TIE="TIE"
-EMPTY=" "
-NUM_SQUARES=9
-parentNodes=[]
-leafNodes=[]
+X = "x"
+O = "O"
+TIE = "TIE"
+EMPTY = " "
+NUM_SQUARES = 9
+parent_nodes = []
+leaf_nodes = []
 
 #opening a file to write all the data to.
-data=open("ticTacToeData", "a")
+data = open("ticTacToeData", "a")
+
 
 #functions
-def displayInstruct():
+def display_instruct():
     """prints the directions to tic tac toe"""
-    print("""
+    print """
     Welcome to Tic-Tac-Toe
 
     This will be the ultimate chalange my artificial intellegiance against
@@ -33,72 +34,79 @@ def displayInstruct():
                     
 
     Good luck because you don't stand a chance. To win you need to get
-    three squares in a row.""")
+    three squares in a row."""
 
-def askYesOrNo(question):
+
+def ask_yes_no(question):
     """asks yes or no question"""
-    response=None
-    while response not in ("y","n"):
-        response=input(question).lower()
+    response = None
+    while response not in ("y", "n"):
+        response = raw_input(question).lower()
     return response
 
-def askNumber(question,low,high):
+
+def ask_number(question, low, high):
     """asks a number between two points"""
-    response=None
-    while response not in range(low,high):
-        response=int(input(question))
+    response = None
+    while response not in range(low, high):
+        response = int(input(question))
     return response
+
 
 def pieces():
     """determines who goes first"""
-    goFirst=askYesOrNo("Do you need the first move? (y/n): ")
-    if goFirst=="y":
-        print("You will need it")
-        human=X
-        computer=O
+    go_first = ask_yes_no("Do you need the first move? (y/n): ")
+    if go_first == "y":
+        print "You will need it"
+        human = X
+        computer = O
     else:
         print("Your bravery will stab you in the back...")
-        computer=X
-        human=O
-    return computer,human
+        computer = X
+        human = O
+    return computer, human
 
-def newBoard():
+
+def new_board():
     """creates a new game board"""
-    board=[]
+    board = []
     for square in range(NUM_SQUARES):
         board.append(EMPTY)
     return board
 
-def displayBoard(board):
+
+def display_board(board):
     """Displays game board"""
     print()
-    print(board[0],"|",board[1],"|",board[2])
+    print(board[0], "|", board[1], "|", board[2])
     print("---------")
-    print(board[3],"|",board[4],"|",board[5])
+    print(board[3], "|", board[4], "|", board[5])
     print("---------")
-    print(board[6],"|",board[7],"|",board[8])
+    print(board[6], "|", board[7], "|", board[8])
 
-def legalMoves(board):
+
+def legal_moves(board):
     """checks if move is legal"""
-    moves=[]
+    moves = []
     for square in range(NUM_SQUARES):
         if board[square] == EMPTY:
             moves.append(square)
     return moves
 
+
 def winner(board):
     """checks for winner"""
-    WAYS_TO_WIN=((0,1,2),
-               (3,4,5),
-               (6,7,8),
-               (0,3,6),
-               (1,4,7),
-               (2,5,8),
-               (0,4,8),
-               (2,4,6))
+    WAYS_TO_WIN = ((0, 1, 2),
+            (3, 4, 5),
+            (6, 7, 8),
+            (0, 3, 6),
+            (1, 4, 7),
+            (2, 5, 8),
+            (0, 4, 8),
+            (2, 4, 6))
     for way in WAYS_TO_WIN:
         if board[way[0]] == board[way[1]] == board[way[2]] != EMPTY:
-            winner=board[way[0]]
+            winner = board[way[0]]
             return winner
     if EMPTY not in board:
         return TIE
@@ -106,17 +114,17 @@ def winner(board):
 
 def humanMove(board):
     """gets human move"""
-    legal=legalMoves(board)
+    legal=legal_moves(board)
     move=None
     while move not in legal:
         print()
-        move=askNumber("Were will you go 0-8: ",0,NUM_SQUARES)
+        move=ask_number("Were will you go 0-8: ",0,NUM_SQUARES)
         if move not in legal:
             print("That square is already taken, pick another one foolish human")
     return move
 
 def gameTree(board,parentNodes,computer,human,turn):
-    nodes=legalMoves(board)
+    nodes=legal_moves(board)
     printNodes=str(nodes)
     print("n "+printNodes)
     board=board[:]
@@ -132,10 +140,10 @@ def gameTree(board,parentNodes,computer,human,turn):
                 parentNodes.append(board)
                 print(str(parentNodes))
         elif winner(board) != None:
-            if board not in leafNodes:
-                leafNodes.append(board)
+            if board not in leaf_nodes:
+                leaf_nodes.append(board)
         board[node]=EMPTY
-    return leafNodes, parentNodes
+    return leaf_nodes, parentNodes
             
 #def minimax(board):
 #    turn="max"
@@ -164,7 +172,7 @@ def computerMove(board,computer,human):
     print("\nI shall take",)
 
     #if computer can win take it
-    for move in legalMoves(board):
+    for move in legal_moves(board):
         board[move]=computer
         if winner(board)==computer:
             print(move)
@@ -173,7 +181,7 @@ def computerMove(board,computer,human):
         board[move]=EMPTY
 
     #if human can win take it
-    for move in legalMoves(board):
+    for move in legal_moves(board):
         board[move]=human
         if winner(board)==human:
             print(move)
@@ -183,7 +191,7 @@ def computerMove(board,computer,human):
 
     #pick best move
     for move in BEST_SQUARES:
-        if move in legalMoves(board):
+        if move in legal_moves(board):
             print(move)
             return move
 
@@ -203,11 +211,11 @@ def congratWinner(theWinner,computer,human):
         print("It is a tie")
 
 def main(parentNodes):
-    displayInstruct()
+    display_instruct()
     computer,human=pieces()
     turn=X
-    board=newBoard()
-    displayBoard(board)
+    board=new_board()
+    display_board(board)
     while not winner(board):
         if turn == human:
             move=humanMove(board)
@@ -230,7 +238,7 @@ def main(parentNodes):
 
             data.write(str(move))
             
-        displayBoard(board)
+        display_board(board)
         turn=nextTurn(turn)
         
         #gather the data
@@ -239,7 +247,7 @@ def main(parentNodes):
     
     theWinner=winner(board)
     congratWinner(theWinner,computer,human)
-main(parentNodes)
+main(parent_nodes)
 data.close()
     
             
