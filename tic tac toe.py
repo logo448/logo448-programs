@@ -9,8 +9,6 @@ O = "O"
 TIE = "TIE"
 EMPTY = " "
 NUM_SQUARES = 9
-parent_nodes = []
-leaf_nodes = []
 
 #opening a file to write all the data to.
 data = open("ticTacToeData", "a")
@@ -125,32 +123,23 @@ def human_move(board):
     return move
 
 
-
-def computerMove(board,computer,human):
+def computer_move(board,computer,human):
     """gets computers move"""
-    #get a mutable copy
-    copyBoard=board[:]
-
-                
-    
     #best squares in order
-    BEST_SQUARES=(4,0,2,6,8,1,3,5,7)
-
+    BEST_SQUARES = (4, 0, 2, 6, 8, 1, 3, 5, 7)
     print("\nI shall take",)
-
     #if computer can win take it
     for move in legal_moves(board):
-        board[move]=computer
-        if winner(board)==computer:
+        board[move] = computer
+        if winner(board) == computer:
             print(move)
             return move
         #done checking this move undo it
-        board[move]=EMPTY
-
+        board[move] = EMPTY
     #if human can win take it
     for move in legal_moves(board):
-        board[move]=human
-        if winner(board)==human:
+        board[move] = human
+        if winner(board) == human:
             print(move)
             return move
         #done checking undo move
@@ -162,91 +151,46 @@ def computerMove(board,computer,human):
             print(move)
             return move
 
-def nextTurn(turn):
-    """swithces turns"""
-    if turn==X:
+
+def next_turn(turn):
+    """switches turns"""
+    if turn == X:
         return O
     else:
         return X
-    
+
+
 #finish congrat note
-def congratWinner(theWinner,computer,human):
+def congrat_winner(the_winner):
     """congrats to the winner"""
-    if theWinner != TIE:
-        print(theWinner,"won")
+    if the_winner != TIE:
+        print(the_winner, "won")
     else:
         print("It is a tie")
 
-def main(parentNodes):
+
+def main():
     display_instruct()
-    computer,human=pieces()
-    turn=X
-    board=new_board()
+    computer, human = pieces()
+    turn = X
+    board = new_board()
     display_board(board)
     while not winner(board):
         if turn == human:
-            move=human_move(board)
-            board[move]=human
-            leafNodes, parentNodes=gameTree(board,parentNodes,computer,human,turn)
-##          leafNodes, getParentNodes=gameTree(board,parentNodes,computer)
-##          parentNodes=getParentNodes
-##          printParentNodes=str(getParentNodes)
-##          print("pn"+printParentNodes)
-
+            move = human_move(board)
+            board[move] = human
             data.write(str(move))
         else:
-            move=computerMove(board,computer,human)
-            board[move]=computer
-            gameTree(board,parentNodes,computer,human,turn)
-##          leafNodes, getParentNodes=gameTree(board,parentNodes,computer)
-##          parentNodes=getParentNodes
-##          printParentNodes=str(getParentNodes)
-##          print("pn"+printParentNodes)
-
+            move = computer_move(board, computer, human)
             data.write(str(move))
             
         display_board(board)
-        turn=nextTurn(turn)
-        
+        turn = next_turn(turn)
         #gather the data
         data.write(str(board)+"\n")
     data.write("\n")
     
-    theWinner=winner(board)
-    congratWinner(theWinner,computer,human)
-main(parent_nodes)
+    the_winner = winner(board)
+    congrat_winner(the_winner)
+main()
 data.close()
-    
-            
-    
-
-
-    
-    
-        
-        
-
-    
-        
-    
-    
-        
-    
-    
-        
-			
-
-
-
-        
-    
-
-    
-    
-        
-
-    
-
-
-    
-    
