@@ -123,32 +123,6 @@ def humanMove(board):
             print("That square is already taken, pick another one foolish human")
     return move
 
-def gameTree(board,parentNodes,computer,human,turn):
-    nodes=legal_moves(board)
-    printNodes=str(nodes)
-    print("n "+printNodes)
-    board=board[:]
-    for node in nodes:
-        print("node "+str(node))
-        print(str(board))
-        if turn != computer:
-            board[node]=computer
-        elif turn != human:
-            board[node]=human
-        if winner(board)==None and winner(board) != TIE:
-            if board not in parentNodes:
-                parentNodes.append(board)
-                print(str(parentNodes))
-        elif winner(board) != None:
-            if board not in leaf_nodes:
-                leaf_nodes.append(board)
-        board[node]=EMPTY
-    return leaf_nodes, parentNodes
-            
-#def minimax(board):
-#    turn="max"
-#    for move in legalMoves(board):
-#        board[move]=computer
 
 def evaluate(board):
     if winner(board)==computer:
