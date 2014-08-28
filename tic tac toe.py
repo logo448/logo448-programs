@@ -112,13 +112,14 @@ def winner(board):
         return TIE
     return None
 
-def humanMove(board):
+
+def human_move(board):
     """gets human move"""
-    legal=legal_moves(board)
-    move=None
+    legal = legal_moves(board)
+    move = None
     while move not in legal:
         print()
-        move=ask_number("Were will you go 0-8: ",0,NUM_SQUARES)
+        move = ask_number("Were will you go 0-8: ", 0, NUM_SQUARES)
         if move not in legal:
             print("That square is already taken, pick another one foolish human")
     return move
@@ -192,7 +193,7 @@ def main(parentNodes):
     display_board(board)
     while not winner(board):
         if turn == human:
-            move=humanMove(board)
+            move=human_move(board)
             board[move]=human
             leafNodes, parentNodes=gameTree(board,parentNodes,computer,human,turn)
 ##          leafNodes, getParentNodes=gameTree(board,parentNodes,computer)
