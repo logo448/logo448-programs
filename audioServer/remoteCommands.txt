@@ -1,0 +1,40 @@
+cd tts
+
+./text2wave.sh "$(cat number.txt)"
+
+./pico2wave.sh "$(cat text.txt)" "$(cat number.txt)"
+
+cat text.txt | tr ' ' '\n' > tmp.txt
+split -l 15 tmp.txt
+lines="$(cat tmp.txt | wc -l)"
+echo "lines " "$lines"
+((files="$lines" / 15))
+if [ "$files" -eq 0 ] ;then
+    files=1
+fi
+
+declare -a alpha=()
+for let in {a..z} ; do
+    for let2 in {a..z} ; do
+        alpha=("${alpha[@]}" "$let$let2")
+        done
+    done
+
+prefix="x"
+count="0"
+while [ "$count" -le "$files" ] ; do
+    extension="$prefix""${alpha["$count"]}"
+    cat $extension | tr '\n' ' ' > "a$extension"
+    rm $extension
+    ./google2wave.sh "$(cat "a$extension")" "a$extension"
+    rm "a$extension"
+    sleep 5
+    ((count = $count + 1))
+    done
+
+cd axOut
+mp3wrap goutput"$(cat /home/logan/tts/number.txt)".mp3 ax*.mp3
+rm ax*.mp3
+cd ..
+rm tmp.txt
+rm text.txt

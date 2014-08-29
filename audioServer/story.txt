@@ -1,0 +1,23 @@
+This is the story of the development of my linux powered text to speech server.
+To kick of the project I installed Linux Mint 17 Cinnamon in virtual box.
+I then decided to play around with festival a text to speech synthesiser and make a shell script that takes a text file and outputs a wav file.
+Then I played around with using festivals built in server mode but decided it wouldn't work.
+I did some research and decided that an ssh connection would work for the task at hand.
+I configured a ssh server on my virtua l machine and connected to it locally.
+When I tried to connect to the virtual server from my windows machine on the same network I was having some problems.
+After some research I realized it was the network settings in virtual box. After changes to network settings the problems were eliminated.
+The next problem I faced was deciding how to connect with a .bat and how to transfer the files.
+To solve these problems I downloaded pscp a secure copy protocal client for windows which can be controlled through cmd as well as 
+plink a way to control ssh from windows command prompt.
+I proceded to write a batch file that connects to the virtual server automatically and does all the necessary tasks.
+The next step in the process is to install ubuntu server 14.04 on an old hp laptop.
+After, the first install I realized that the networking was not configured correctly so to fix this I had to reinstall the operating system.
+This fixed the problem and I installed the following packages festival, a default voice in festival, and an ssh server.
+Finally, I configured my clients and the ssh server.
+And that is the story of my audio conversion server.
+But it wasn't over I wasn't happy with the audio quality and I started the hunt for the highest quality audio I could get for free.
+My sister and I listened to the voices in espeak another tts protocal and decided they were worse than what we had.
+I thought that the higher quality voices you can download for festival would work but my sister and I liked the voice I already have.
+Then SVOX pico showed up and I liked the default voice but couldn't get it to read from a text file so, I was about to give up on it.
+Right when I was about to quit I came upon a workaround so now I can use the default voice for pico and it works great. 
+But, it still isn't perfect so I think I am going to look into a web tts that google has.
