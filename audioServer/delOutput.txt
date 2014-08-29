@@ -1,7 +1,0 @@
-rm /home/logan/tts/foutput"$(cat /home/logan/tts/number.txt)".wav 
-rm /home/logan/tts/poutput"$(cat /home/logan/tts/number.txt)".wav
-rm /home/logan/tts/axOut/goutput"$(cat /home/logan/tts/number.txt)"_MP3WRAP.mp3
-
-NUM="$(cat /home/logan/tts/number.txt)"
-echo $(($NUM + 1)) > /home/logan/tts/number.txt
-
