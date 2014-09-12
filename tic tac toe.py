@@ -1,6 +1,5 @@
 #Logan Stenzel
 #
-#4/30-5/ /13
 #Tic Tac Toe
 
 #global constants
@@ -20,7 +19,7 @@ def display_instruct():
     print """
     Welcome to Tic-Tac-Toe
 
-    This will be the ultimate chalange my artificial intellegiance against
+    This will be the ultimate challenge my artificial intellegiance against
     your brain. To pick your square use the grid below.
     
 
@@ -183,7 +182,6 @@ def main():
             move = computer_move(board, computer, human)
             board[move] = computer
             data.write(str(move))
-            
         display_board(board)
         turn = next_turn(turn)
         #gather the data
