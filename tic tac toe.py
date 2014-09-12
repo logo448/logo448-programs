@@ -9,9 +9,6 @@ TIE = "TIE"
 EMPTY = " "
 NUM_SQUARES = 9
 
-#opening a file to write all the data to.
-data = open("ticTacToeData", "a")
-
 
 #functions
 def display_instruct():
@@ -177,18 +174,12 @@ def main():
         if turn == human:
             move = human_move(board)
             board[move] = human
-            data.write(str(move))
         else:
             move = computer_move(board, computer, human)
             board[move] = computer
-            data.write(str(move))
         display_board(board)
         turn = next_turn(turn)
         #gather the data
-        data.write(str(board)+"\n")
-    data.write("\n")
-    
     the_winner = winner(board)
     congrat_winner(the_winner)
 main()
-data.close()
