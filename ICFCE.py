@@ -379,49 +379,63 @@ def main_dnc():
     f.close()
 
 
+#GUI
+#initialize app set title and size
 app = Tk()
 app.title('ICFCE')
 app.geometry('1080x1920')
 
+#encrypted message save path text
 save_path_text = StringVar()
 save_path_text.set('Enter the path where you want your encrypted file saved.')
+#label
 save_path = Label(app, textvariable=save_path_text, height=4)
 save_path.pack(fill=X)
-
+#input
 save_path_input = Entry(app)
 save_path_input.pack(fill=X, padx=15)
 
+#path of input text
 message_path_text = StringVar()
 message_path_text.set('Enter the path of the message to be encrypted.')
+#label
 message_path_labal = Label(app, textvariable=message_path_text, height=4)
 message_path_labal.pack(fill=X)
-
+#input
 message_path_input = Entry(app)
 message_path_input.pack(fill=X, padx=15)
 
+#encrypt button
 enc_button = Button(app, text='Encrypt', width=20, command=main_enc)
 enc_button.pack()
 
+#create empty space
 empty = Label(app)
 empty.pack(pady=50)
 
+#decrypted message save path text
 d_save_path_text = StringVar()
 d_save_path_text.set('Enter the path where the decrypted message will be saved.')
+#label
 d_save_path = Label(app, textvariable=d_save_path_text, height=4)
 d_save_path.pack(fill=X)
-
+#input
 d_save_path_input = Entry(app)
 d_save_path_input.pack(fill=X, padx=15)
 
+#decryption input path text
 d_message_path_text = StringVar()
 d_message_path_text.set('Enter the path of the encrypted message you want decrypted.')
+#label
 d_message_path = Label(app, textvariable=d_message_path_text, height=4)
 d_message_path.pack(fill=X)
-
+#input
 d_message_input = Entry(app)
 d_message_input.pack(fill=X, padx=15)
 
+#decrypt button
 dnc_button = Button(app, text='Decrypt', width=20, command=main_dnc)
 dnc_button.pack()
 
+#start gui
 app.mainloop()
