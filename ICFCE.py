@@ -353,10 +353,11 @@ def main_enc():
     message_path = message_path_input.get()
     save_path_var = save_path_input.get()
     count = 0
+    csv_mode = csv_var.get()
     f = open(str(message_path), "r")
     word = f.read()
     f.close()
-    while count < 4:
+    while count < 1:
         word = encrypt(word)
         count += 1
     f = open(str(save_path_var), "w+")
@@ -405,6 +406,12 @@ message_path_labal.pack(fill=X)
 message_path_input = Entry(app)
 message_path_input.pack(fill=X, padx=15)
 
+#csv checkbox variable
+csv_var = IntVar()
+#button
+csv_button = Checkbutton(app, text="CSV File Mode", variable=csv_var)
+csv_button.pack()
+
 #encrypt button
 enc_button = Button(app, text='Encrypt', width=20, command=main_enc)
 enc_button.pack()
@@ -432,6 +439,12 @@ d_message_path.pack(fill=X)
 #input
 d_message_input = Entry(app)
 d_message_input.pack(fill=X, padx=15)
+
+#csv checkbox variable
+d_csv_var = IntVar()
+#button
+d_csv_button = Checkbutton(app, text="CSV File Mode", variable=d_csv_var)
+d_csv_button.pack()
 
 #decrypt button
 dnc_button = Button(app, text='Decrypt', width=20, command=main_dnc)
