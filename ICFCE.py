@@ -5,6 +5,7 @@
 import string
 import random
 from Tkinter import *
+import csv
 
 # VARIABLES
 letter_displacement = 2
@@ -353,15 +354,23 @@ def main_enc():
     message_path = message_path_input.get()
     save_path_var = save_path_input.get()
     count = 0
+    message = []
     csv_mode = csv_var.get()
-    f = open(str(message_path), "r")
-    word = f.read()
-    f.close()
+    if csv_mode == 1:
+        f = open(str(message_path), "rb")
+        reader = csv.reader(f, dialect='excel')
+        for i in reader:
+            message.append(i)
+        f.close()
+    elif csv_mode == 0:
+        f = open(str(message_path), "r")
+        message = f.read()
+        f.close()
     while count < 1:
-        word = encrypt(word)
+        message = encrypt(message)
         count += 1
     f = open(str(save_path_var), "w+")
-    f.write(str(word))
+    f.write(str(message))
     f.close()
 
 
@@ -400,8 +409,8 @@ save_path_input.pack(fill=X, padx=15)
 message_path_text = StringVar()
 message_path_text.set('Enter the path of the message to be encrypted.')
 #label
-message_path_labal = Label(app, textvariable=message_path_text, height=4)
-message_path_labal.pack(fill=X)
+message_path_label = Label(app, textvariable=message_path_text, height=4)
+message_path_label.pack(fill=X)
 #input
 message_path_input = Entry(app)
 message_path_input.pack(fill=X, padx=15)
