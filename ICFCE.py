@@ -353,25 +353,33 @@ def break_flavor_code(message):
 def main_enc():
     message_path = message_path_input.get()
     save_path_var = save_path_input.get()
-    count = 0
     message = []
     csv_mode = csv_var.get()
     if csv_mode == 1:
+        #read the csv file
         f = open(str(message_path), "rb")
         reader = csv.reader(f, dialect='excel')
-        for i in reader:
-            message.append(i)
+        for tmp in reader:
+            message.append(tmp)
         f.close()
+
+        #write to a csv file
+        for row in message:
+            encrypted_message = []
+            for column in row:
+                encrypted_message.append(str(column))
+            f = open(str(message_path), "wb")
+            writer = csv.writer(f, dialect='excel')
+            writer.writerow(encrypted_message)
+
     elif csv_mode == 0:
         f = open(str(message_path), "r")
         message = f.read()
         f.close()
-    while count < 1:
         message = encrypt(message)
-        count += 1
-    f = open(str(save_path_var), "w+")
-    f.write(str(message))
-    f.close()
+        f = open(str(save_path_var), "w+")
+        f.write(str(message))
+        f.close()
 
 
 def main_dnc():
