@@ -360,17 +360,19 @@ def main_enc():
         f = open(str(message_path), "rb")
         reader = csv.reader(f, dialect='excel')
         for tmp in reader:
+            print tmp
             message.append(tmp)
         f.close()
-
+        print message
+        f = open(str(save_path_var), "wb")
         #write to a csv file
         for row in message:
             encrypted_message = []
             for column in row:
-                encrypted_message.append(str(column))
-            f = open(str(message_path), "wb")
+                encrypted_message.append(encrypt(str(column)))
             writer = csv.writer(f, dialect='excel')
             writer.writerow(encrypted_message)
+        f.close()
 
     elif csv_mode == 0:
         f = open(str(message_path), "r")
