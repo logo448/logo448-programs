@@ -5,6 +5,7 @@
 import string
 import random
 from Tkinter import *
+import csv
 
 # VARIABLES
 letter_displacement = 2
@@ -352,31 +353,67 @@ def break_flavor_code(message):
 def main_enc():
     message_path = message_path_input.get()
     save_path_var = save_path_input.get()
-    count = 0
-    f = open(str(message_path), "r")
-    word = f.read()
-    f.close()
-    while count < 4:
-        word = encrypt(word)
-        count += 1
-    f = open(str(save_path_var), "w+")
-    f.write(str(word))
-    f.close()
+    message = []
+    csv_mode = csv_var.get()
+    if csv_mode == 1:
+        #read the csv file
+        f = open(str(message_path), "rb")
+        reader = csv.reader(f, dialect='excel')
+        for tmp in reader:
+            print tmp
+            message.append(tmp)
+        f.close()
+        print message
+        f = open(str(save_path_var), "wb")
+        writer = csv.writer(f, dialect='excel')
+        #write to a csv file
+        for row in message:
+            encrypted_message = []
+            for column in row:
+                encrypted_message.append(encrypt(str(column)))
+            writer.writerow(encrypted_message)
+        f.close()
+
+    elif csv_mode == 0:
+        f = open(str(message_path), "r")
+        message = f.read()
+        f.close()
+        message = encrypt(message)
+        f = open(str(save_path_var), "w+")
+        f.write(str(message))
+        f.close()
 
 
 def main_dnc():
     message_path = d_message_input.get()
-    f = open(str(message_path), "r+")
-    word = f.read()
-    f.close()
-    dpathv = d_save_path_input.get()
-    count = 0
-    while count < 4:
-        word = decrypt(word)
-        count += 1
-    f = open(str(dpathv), "w+")
-    f.write(str(word))
-    f.close()
+    save_path_var = d_save_path_input.get()
+    csv_mode = d_csv_var.get()
+    message = []
+    if csv_mode == 1:
+        f = open(message_path, "rb")
+        reader = csv.reader(f, dialect='excel')
+        for tmp in reader:
+            message.append(tmp)
+        f.close()
+        print message
+        f = open(save_path_var, "wb")
+        writer = csv.writer(f, dialect='excel')
+        for row in message:
+            decrypted_message = []
+            for col in row:
+                decrypted_message.append(decrypt(col))
+            print decrypted_message
+            writer.writerow(decrypted_message)
+        f.close()
+
+    elif csv_mode == 0:
+        f = open(str(message_path), "r")
+        message = f.read()
+        f.close()
+        message = decrypt(message)
+        f = open(str(save_path_var), "w+")
+        f.write(str(message))
+        f.close()
 
 
 #GUI
@@ -399,11 +436,17 @@ save_path_input.pack(fill=X, padx=15)
 message_path_text = StringVar()
 message_path_text.set('Enter the path of the message to be encrypted.')
 #label
-message_path_labal = Label(app, textvariable=message_path_text, height=4)
-message_path_labal.pack(fill=X)
+message_path_label = Label(app, textvariable=message_path_text, height=4)
+message_path_label.pack(fill=X)
 #input
 message_path_input = Entry(app)
 message_path_input.pack(fill=X, padx=15)
+
+#csv checkbox variable
+csv_var = IntVar()
+#button
+csv_button = Checkbutton(app, text="CSV File Mode", variable=csv_var)
+csv_button.pack()
 
 #encrypt button
 enc_button = Button(app, text='Encrypt', width=20, command=main_enc)
@@ -432,6 +475,12 @@ d_message_path.pack(fill=X)
 #input
 d_message_input = Entry(app)
 d_message_input.pack(fill=X, padx=15)
+
+#csv checkbox variable
+d_csv_var = IntVar()
+#button
+d_csv_button = Checkbutton(app, text="CSV File Mode", variable=d_csv_var)
+d_csv_button.pack()
 
 #decrypt button
 dnc_button = Button(app, text='Decrypt', width=20, command=main_dnc)
