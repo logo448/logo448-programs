@@ -365,12 +365,12 @@ def main_enc():
         f.close()
         print message
         f = open(str(save_path_var), "wb")
+        writer = csv.writer(f, dialect='excel')
         #write to a csv file
         for row in message:
             encrypted_message = []
             for column in row:
                 encrypted_message.append(encrypt(str(column)))
-            writer = csv.writer(f, dialect='excel')
             writer.writerow(encrypted_message)
         f.close()
 
@@ -386,17 +386,34 @@ def main_enc():
 
 def main_dnc():
     message_path = d_message_input.get()
-    f = open(str(message_path), "r+")
-    word = f.read()
-    f.close()
-    dpathv = d_save_path_input.get()
-    count = 0
-    while count < 4:
-        word = decrypt(word)
-        count += 1
-    f = open(str(dpathv), "w+")
-    f.write(str(word))
-    f.close()
+    save_path_var = d_save_path_input.get()
+    csv_mode = d_csv_var.get()
+    message = []
+    if csv_mode == 1:
+        f = open(message_path, "rb")
+        reader = csv.reader(f, dialect='excel')
+        for tmp in reader:
+            message.append(tmp)
+        f.close()
+        print message
+        f = open(save_path_var, "wb")
+        writer = csv.writer(f, dialect='excel')
+        for row in message:
+            decrypted_message = []
+            for col in row:
+                decrypted_message.append(decrypt(col))
+            print decrypted_message
+            writer.writerow(decrypted_message)
+        f.close()
+
+    elif csv_mode == 0:
+        f = open(str(message_path), "r")
+        message = f.read()
+        f.close()
+        message = decrypt(message)
+        f = open(str(save_path_var), "w+")
+        f.write(str(message))
+        f.close()
 
 
 #GUI
