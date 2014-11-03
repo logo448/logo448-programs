@@ -1,0 +1,6 @@
+C:\Users\Logan\PycharmProjects\logo448-programs-pycharm\helloWorld\helloWorld\bin\Debug\helloWorld.exe.config
+C:\Users\Logan\PycharmProjects\logo448-programs-pycharm\helloWorld\helloWorld\bin\Debug\helloWorld.exe
+C:\Users\Logan\PycharmProjects\logo448-programs-pycharm\helloWorld\helloWorld\bin\Debug\helloWorld.pdb
+C:\Users\Logan\PycharmProjects\logo448-programs-pycharm\helloWorld\helloWorld\obj\Debug\helloWorld.csprojResolveAssemblyReference.cache
+C:\Users\Logan\PycharmProjects\logo448-programs-pycharm\helloWorld\helloWorld\obj\Debug\helloWorld.exe
+C:\Users\Logan\PycharmProjects\logo448-programs-pycharm\helloWorld\helloWorld\obj\Debug\helloWorld.pdb
