@@ -23,7 +23,7 @@ namespace EulerProb1
 
             // create an array to hold 3's and 5's
             int[] three = new int[333];
-            int[] five = new int[66];
+            int [three] = new int[66];
 
             // secondary counter
             int counter2 = 0;
@@ -34,6 +34,8 @@ namespace EulerProb1
                 // get list of multiples of 3 and 5
                 for (int counter = 0; counter <= 1000; counter = counter + foobar)
                 {
+                    //check if were finder three's or fives
+                    switch(foobar)
                     //if (!nums.Contains(counter))
                     //{
                     //    // add value to nums
