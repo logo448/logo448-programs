@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Speech.Synthesis;
+
 // this is the namespace
 namespace helloWorld
 {
@@ -24,7 +26,7 @@ namespace helloWorld
             // writes users input to screen
             Console.WriteLine("You typed in: {0}", input);
             // call foobar
-            foobar();
+            foobar();      
             // call loop
             loop();
 
@@ -43,6 +45,9 @@ namespace helloWorld
                     Console.WriteLine("loser");
                     break;
             }
+            // playing around with text to speech
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+            synth.Speak("hello world");
         }
         // a function to do math!
         static void foobar()
