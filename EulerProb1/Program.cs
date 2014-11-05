@@ -16,17 +16,7 @@ namespace EulerProb1
         static void Main(string[] args)
         {
             // create a list to hold nums
-            //List<int> nums = new List<int>();
-
-            // create sum variable
-            int sum = 0;
-
-            // create an array to hold 3's and 5's
-            int[] three = new int[333];
-            int [three] = new int[66];
-
-            // secondary counter
-            int counter2 = 0;
+            List<int> nums = new List<int>();
 
             // loop that executes twice
             for (int foobar = 3; foobar < 6; foobar = foobar + 2)
@@ -34,23 +24,30 @@ namespace EulerProb1
                 // get list of multiples of 3 and 5
                 for (int counter = 0; counter <= 1000; counter = counter + foobar)
                 {
-                    //check if were finder three's or fives
-                    switch(foobar)
-                    //if (!nums.Contains(counter))
-                    //{
-                    //    // add value to nums
-                    //    nums.Add(counter);
-                    //}  
-
-                    // check to see if the pot num is already in nums
-                    if (! nums.Contains(counter))
+                    if (!nums.Contains(counter))
                     {
-                        nums[counter2++] = counter;
+                        // add value to nums
+                        nums.Add(counter);
                     }
-                    // sums the multiplies of 3 then combines with 5's
-                    sum = sum + nums.Sum();
+                    //debug
+                    //if (foobar == 3)
+                    //{
+                    //    Console.WriteLine(counter);
+                    //}
+                    
                 }
+                // debug 
+                //nums.ForEach(Console.WriteLine);               
+
+                // debug 
+                //Console.WriteLine("sum: {0}", sum);
+
+                // degub
+                Console.WriteLine(nums.Count());
             }
+            // sums the multiplies of 3 and 5
+            int sum = nums.Sum();
+
             // print results
             Console.WriteLine(sum - 1000);
         }
