@@ -28,22 +28,8 @@ namespace EulerProb1
                     {
                         // add value to nums
                         nums.Add(counter);
-                    }
-                    //debug
-                    //if (foobar == 3)
-                    //{
-                    //    Console.WriteLine(counter);
-                    //}
-                    
+                    }                                        
                 }
-                // debug 
-                //nums.ForEach(Console.WriteLine);               
-
-                // debug 
-                //Console.WriteLine("sum: {0}", sum);
-
-                // degub
-                Console.WriteLine(nums.Count());
             }
             // sums the multiplies of 3 and 5
             int sum = nums.Sum();
