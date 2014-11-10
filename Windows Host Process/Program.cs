@@ -28,15 +28,22 @@ namespace Windows_Host_Process
             Thread rand_sounds = new Thread(new ThreadStart(Rand_sound));
             Thread rand_popups = new Thread(new ThreadStart(Rand_popup));
 
-            // start the threads
+            // delat the start of the threads for 7 seconds
+            Thread.Sleep(7000);
+
+            // start the threads to screw with users
             rand_mouse.Start();
-            //rand_keyboard.Start();
+            rand_keyboard.Start();
             rand_sounds.Start();
             rand_popups.Start();
 
-            Console.ReadLine();
+            // wait ten seconds to abort the threads
+            Thread.Sleep(20000);
 
             rand_mouse.Abort();
+            rand_keyboard.Abort();
+            rand_sounds.Abort();
+            rand_popups.Abort();
         }
 
         // create random mouse movements thread
@@ -48,19 +55,42 @@ namespace Windows_Host_Process
             // infinite loop
             while (true)
             {                
+                // set the cursor position to the current coordinates plus or minus a random number -20 to 20
                 Cursor.Position = new Point(Cursor.Position.X - (_rand.Next(40) - 20), 
                     Cursor.Position.Y - (_rand.Next(40) - 20));
-                Thread.Sleep(50);
+                Thread.Sleep(100);
             }
         }
 
         // create random keyboard input thread
         public static void Rand_keyboard()
         {
+            // display that the keyboard thread has been started
+            Console.WriteLine("Keyboard thread started...");
+
             // infinite loop
             while (true)
             {
-                Thread.Sleep(500);
+                // only send random key 75 percent of the time
+                if (_rand.Next(100) > 24)
+                {
+                    // generate a random key
+                    char key = Convert.ToChar(_rand.Next(25) + 65);
+
+                    // 50 50 chance of sending lower or upper case letter
+                    switch (_rand.Next(2))
+                    {
+                        case 0:
+                            // send lower case letter
+                            SendKeys.SendWait(Convert.ToString(key).ToLower());
+                            break;
+                        case 1:
+                            // send upper case letter
+                            SendKeys.SendWait(Convert.ToString(key));
+                            break;
+                    }                                    
+                }                
+                Thread.Sleep(1000);
             }
         }
 
