@@ -55,5 +55,32 @@ namespace helloWorldGui
             // uncheck radio button
             radioButton1.Checked = false;
         }
+
+        /// <summary>
+        /// exits the program is someone presses the exit button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // exit
+            this.Close();
+        }
+
+        /// <summary>
+        /// prints text to the rich text box if about button is clicked
+        /// and popup a message box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            // apend text to the text box
+            richTextBox1.AppendText("\n\n This is a GUI sandbox created by Logan Stenzel\n\n");
+
+            // popup a message box
+            MessageBox.Show("This is a GUI sandbox created by Logan Stenzel", "Hello WORLD", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
