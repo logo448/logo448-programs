@@ -43,14 +43,41 @@ namespace binaryClock
 
             // set a sleep var variable to determine how long to sleep in between each loop
             // initially set to adjust for the current time
-            int sleep_var = (60 - cur_time.Seconds) * 1000;           
+            int sleep_var = (60 - cur_time.Seconds) * 1000;       
+
+            // variable to hold current hour and minutes
+            int hour = (cur_time.Hours) - 12;
+            int mins = cur_time.Minutes;
+
+            // variable to hold current hour and minutes in binary
+            string hr_binary;
+            string min_binary;
 
             // infinite loop
             while (true)
             {
+                // get current mins
+                mins = cur_time.Minutes;
+
+                // check to see if it is a new hour
+                if (mins == 0)
+                {
+                    hour = (cur_time.Hours) - 12;
+                }
+
+                // convert hrs and mins to binary
+                hr_binary = Convert.ToString(mins, 2);
+                min_binary = Convert.ToString(hour, 2);
+
+                // debug 
+                MessageBox.Show(hr_binary);
+                MessageBox.Show(min_binary);
+
+                // adjust for the time it took to do the calculations
+                sleep_var = (60 - cur_time.Seconds) * 1000;
+
                 // sleep for x seconds
                 Thread.Sleep(sleep_var);
-                sleep_var = 60000;
             }
         }
     }
