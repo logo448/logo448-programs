@@ -38,6 +38,7 @@ namespace binaryClock
         /// </summary>
         private void Main()
         {
+            #region prepare for main loop of function
             // set the current time to a variable
             TimeSpan cur_time = DateTime.Now.TimeOfDay;
 
@@ -52,6 +53,7 @@ namespace binaryClock
             // variable to hold current hour and minutes in binary
             string hr_binary;
             string min_binary;
+            #endregion
 
             // infinite loop
             while (true)
@@ -62,16 +64,49 @@ namespace binaryClock
                 // check to see if it is a new hour
                 if (mins == 0)
                 {
+                    // set the hour
                     hour = (cur_time.Hours) - 12;
                 }
 
                 // convert hrs and mins to binary
-                hr_binary = Convert.ToString(mins, 2);
-                min_binary = Convert.ToString(hour, 2);
+                hr_binary = Convert.ToString(hour, 2);
+                min_binary = Convert.ToString(mins, 2);
 
-                // debug 
-                MessageBox.Show(hr_binary);
-                MessageBox.Show(min_binary);
+                // reverse the binary digits
+                char[] tmp = min_binary.ToCharArray();
+                Array.Reverse(tmp);
+                min_binary = new string(tmp);
+                char[] tmp_1 = hr_binary.ToCharArray();
+                Array.Reverse(tmp_1);
+                hr_binary = new string(tmp_1);
+
+                #region append zeros to end of binary numbers if numbers aren't large enough
+                // check to see if min_binary is long enough
+                if (min_binary.Length < 6)
+                {
+                    // find how many more zeros are needed
+                    int zeros_needed = 6 - min_binary.Length;
+
+                    // add the appropriate amoun of zeros
+                    for (int i = 0; i < zeros_needed; i++)
+                    {
+                        min_binary = min_binary + "0";
+                    }
+                }
+
+                // check to see if hr_binary is long enough
+                if (hr_binary.Length < 4)
+                {
+                    // find how many more zeros are needed
+                    int zeros_needed = 4 - hr_binary.Length;
+
+                    // add the appropriate amoun of zeros
+                    for (int i = 0; i < zeros_needed; i++)
+                    {
+                        hr_binary = hr_binary + "0";
+                    }
+                }
+                #endregion
 
                 // adjust for the time it took to do the calculations
                 sleep_var = (60 - cur_time.Seconds) * 1000;
