@@ -108,6 +108,10 @@ namespace binaryClock
                 }
                 #endregion
 
+                // check the correct checkboxes
+                // hours
+                
+
                 // adjust for the time it took to do the calculations
                 sleep_var = (60 - cur_time.Seconds) * 1000;
 
