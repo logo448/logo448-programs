@@ -27,10 +27,10 @@ namespace binaryClock
         private void Form1_Load(object sender, EventArgs e)
         {
             // start main function
-            Main();
+            //Main();
 
-            // debug
-            MessageBox.Show("Hello");
+            Thread main = new Thread(new ThreadStart(Main));
+            main.Start();
         }
 
         /// <summary>
@@ -110,6 +110,7 @@ namespace binaryClock
 
                 // check the correct checkboxes
                 // hours
+
                 // loop through hour binary string
                 for (int i = 0; i < 4; i++)
                 {
@@ -119,19 +120,31 @@ namespace binaryClock
                     // check to see if each position is on or off
                     if (i == 0 && dig == "1")
                     {
-                        checkBox1.Checked = true;
+                        // create an action for the invoke method
+                        Action action = () => checkBox1.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
                     }
                     if (i == 1 && dig == "1")
                     {
-                        checkBox2.Checked = true;
+                        // create an action for the invoke method
+                        Action action = () => checkBox2.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
                     }
                     if (i == 2 && dig == "1")
                     {
-                        checkBox1.Checked = true;
+                        // create an action for the invoke method
+                        Action action = () => checkBox3.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
                     }
                     if (i == 3 && dig == "1")
                     {
-                        checkBox1.Checked = true;
+                        // create an action for the invoke method
+                        Action action = () => checkBox4.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
                     }
                 }
 
