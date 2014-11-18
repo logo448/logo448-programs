@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Threading;
+
 namespace helloWorldGui
 {
     public partial class Form1 : Form
@@ -15,6 +17,9 @@ namespace helloWorldGui
         public Form1()
         {
             InitializeComponent();
+            // create and start a test thread
+            Thread foobar = new Thread(new ThreadStart(Foobar));
+            foobar.Start();
         }
 
         /// <summary>
@@ -81,6 +86,12 @@ namespace helloWorldGui
 
             // popup a message box
             MessageBox.Show("This is a GUI sandbox created by Logan Stenzel", "Hello WORLD", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void Foobar()
+        {
+            Action action = () => richTextBox1.AppendText("Thread");
+            this.Invoke(action);
         }
     }
 }
