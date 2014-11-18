@@ -14,6 +14,17 @@ namespace helloWorld
         // this is the main function
         static void Main(string[] args)
         {
+            // loop through string test
+            string test = "hello";
+            char[] tmp_array = test.ToCharArray();
+            Array.Reverse(tmp_array);
+            test = new string(tmp_array);
+            Console.WriteLine(test);
+            foreach (char chr in test)
+            {
+                Console.WriteLine(chr);
+            }
+
             //changes console colors
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.BackgroundColor = ConsoleColor.Yellow;

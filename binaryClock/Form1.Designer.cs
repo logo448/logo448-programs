@@ -105,44 +105,44 @@
             // 
             this.checkBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(162, 112);
+            this.checkBox5.Location = new System.Drawing.Point(162, 193);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(38, 21);
             this.checkBox5.TabIndex = 19;
-            this.checkBox5.Text = "8";
+            this.checkBox5.Text = "1";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox6
             // 
             this.checkBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(162, 139);
+            this.checkBox6.Location = new System.Drawing.Point(162, 166);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(38, 21);
             this.checkBox6.TabIndex = 18;
-            this.checkBox6.Text = "4";
+            this.checkBox6.Text = "2";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBox7
             // 
             this.checkBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(162, 166);
+            this.checkBox7.Location = new System.Drawing.Point(162, 139);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(38, 21);
             this.checkBox7.TabIndex = 17;
-            this.checkBox7.Text = "2";
+            this.checkBox7.Text = "4";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // checkBox8
             // 
             this.checkBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(162, 193);
+            this.checkBox8.Location = new System.Drawing.Point(162, 112);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(38, 21);
             this.checkBox8.TabIndex = 16;
-            this.checkBox8.Text = "1";
+            this.checkBox8.Text = "8";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // checkBox9
