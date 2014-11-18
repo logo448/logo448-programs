@@ -20,17 +20,17 @@ namespace binaryClock
         }
 
         /// <summary>
-        /// create and start the main thread on load of the app
+        /// start main function
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            // create the main thread
-            Thread main = new Thread(new ThreadStart(Main));
+            // start main function
+            Main();
 
-            // start the main thread
-            main.Start();
+            // debug
+            MessageBox.Show("Hello");
         }
 
         /// <summary>
@@ -110,10 +110,33 @@ namespace binaryClock
 
                 // check the correct checkboxes
                 // hours
-                
+                // loop through hour binary string
+                for (int i = 0; i < 4; i++)
+                {
+                    // get a digit of the hour binary string and store it in dig
+                    string dig = hr_binary[i].ToString();
 
-                // adjust for the time it took to do the calculations
-                sleep_var = (60 - cur_time.Seconds) * 1000;
+                    // check to see if each position is on or off
+                    if (i == 0 && dig == "1")
+                    {
+                        checkBox1.Checked = true;
+                    }
+                    if (i == 1 && dig == "1")
+                    {
+                        checkBox2.Checked = true;
+                    }
+                    if (i == 2 && dig == "1")
+                    {
+                        checkBox1.Checked = true;
+                    }
+                    if (i == 3 && dig == "1")
+                    {
+                        checkBox1.Checked = true;
+                    }
+                }
+
+                    // adjust for the time it took to do the calculations
+                    sleep_var = (60 - cur_time.Seconds) * 1000;
 
                 // sleep for x seconds
                 Thread.Sleep(sleep_var);
