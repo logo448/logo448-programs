@@ -146,6 +146,59 @@ namespace binaryClock
                     }
                 }
 
+                // mins
+
+                // loop through mins binary string
+                for (int i = 0; i < 5; i++)
+                {
+                    // get a digit of the hour binary string and store it in dig
+                    string dig = min_binary[i].ToString();
+
+                    // check to see if each position is on or off
+                    if (i == 0 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox10.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 1 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox9.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 2 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox8.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 3 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox7.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 4 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox6.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 4 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox5.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                }
+
                     // adjust for the time it took to do the calculations
                     sleep_var = (60 - cur_time.Seconds) * 1000;
 
