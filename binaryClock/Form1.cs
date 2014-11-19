@@ -72,13 +72,13 @@ namespace binaryClock
                 hr_binary = Convert.ToString(hour, 2);
                 min_binary = Convert.ToString(mins, 2);
 
-                // reverse the binary digits
-                char[] tmp = min_binary.ToCharArray();
-                Array.Reverse(tmp);
-                min_binary = new string(tmp);
-                char[] tmp_1 = hr_binary.ToCharArray();
-                Array.Reverse(tmp_1);
-                hr_binary = new string(tmp_1);
+                //// reverse the binary digits
+                //char[] tmp = min_binary.ToCharArray();
+                //Array.Reverse(tmp);
+                //min_binary = new string(tmp);
+                //char[] tmp_1 = hr_binary.ToCharArray();
+                //Array.Reverse(tmp_1);
+                //hr_binary = new string(tmp_1);
 
                 #region append zeros to end of binary numbers if numbers aren't large enough
                 // check to see if min_binary is long enough
@@ -90,7 +90,7 @@ namespace binaryClock
                     // add the appropriate amoun of zeros
                     for (int i = 0; i < zeros_needed; i++)
                     {
-                        min_binary = min_binary + "0";
+                        min_binary = "0" + min_binary;
                     }
                 }
 
@@ -103,7 +103,7 @@ namespace binaryClock
                     // add the appropriate amoun of zeros
                     for (int i = 0; i < zeros_needed; i++)
                     {
-                        hr_binary = hr_binary + "0";
+                        hr_binary = "0" + hr_binary;
                     }
                 }
                 #endregion
@@ -121,14 +121,14 @@ namespace binaryClock
                     if (i == 0 && dig == "1")
                     {
                         // create an action for the invoke method
-                        Action action = () => checkBox1.Checked = true;
+                        Action action = () => checkBox11.Checked = true;
                         // use invoke to access gui element from different thread
                         this.Invoke(action);
                     }
                     if (i == 1 && dig == "1")
                     {
                         // create an action for the invoke method
-                        Action action = () => checkBox2.Checked = true;
+                        Action action = () => checkBox4.Checked = true;
                         // use invoke to access gui element from different thread
                         this.Invoke(action);
                     }
@@ -142,14 +142,14 @@ namespace binaryClock
                     if (i == 3 && dig == "1")
                     {
                         // create an action for the invoke method
-                        Action action = () => checkBox4.Checked = true;
+                        Action action = () => checkBox2.Checked = true;
                         // use invoke to access gui element from different thread
                         this.Invoke(action);
                     }
                     if (i == 4 && dig == "1")
                     {
                         // create an action for the invoke method
-                        Action action = () => checkBox11.Checked = true;
+                        Action action = () => checkBox1.Checked = true;
                         // use invoke to access gui element from different thread
                         this.Invoke(action);
                     }
