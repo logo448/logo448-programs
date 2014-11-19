@@ -20,16 +20,15 @@ namespace binaryClock
         }
 
         /// <summary>
-        /// start main function
+        /// create and start main thread
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            // start main function
-            //Main();
-
+            // create the main thread
             Thread main = new Thread(new ThreadStart(Main));
+            // run the main thread
             main.Start();
         }
 
@@ -71,14 +70,6 @@ namespace binaryClock
                 // convert hrs and mins to binary
                 hr_binary = Convert.ToString(hour, 2);
                 min_binary = Convert.ToString(mins, 2);
-
-                //// reverse the binary digits
-                //char[] tmp = min_binary.ToCharArray();
-                //Array.Reverse(tmp);
-                //min_binary = new string(tmp);
-                //char[] tmp_1 = hr_binary.ToCharArray();
-                //Array.Reverse(tmp_1);
-                //hr_binary = new string(tmp_1);
 
                 #region append zeros to end of binary numbers if numbers aren't large enough
                 // check to see if min_binary is long enough
