@@ -47,7 +47,7 @@ namespace binaryClock
             int sleep_var = (60 - cur_time.Seconds) * 1000;       
 
             // variable to hold current hour and minutes
-            int hour = (cur_time.Hours) - 12;
+            int hour = cur_time.Hours;
             int mins = cur_time.Minutes;
 
             // variable to hold current hour and minutes in binary
@@ -65,7 +65,7 @@ namespace binaryClock
                 if (mins == 0)
                 {
                     // set the hour
-                    hour = (cur_time.Hours) - 12;
+                    hour = cur_time.Hours;
                 }
 
                 // convert hrs and mins to binary
@@ -95,10 +95,10 @@ namespace binaryClock
                 }
 
                 // check to see if hr_binary is long enough
-                if (hr_binary.Length < 4)
+                if (hr_binary.Length < 5)
                 {
                     // find how many more zeros are needed
-                    int zeros_needed = 4 - hr_binary.Length;
+                    int zeros_needed = 5 - hr_binary.Length;
 
                     // add the appropriate amoun of zeros
                     for (int i = 0; i < zeros_needed; i++)
@@ -112,7 +112,7 @@ namespace binaryClock
                 // hours
 
                 // loop through hour binary string
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     // get a digit of the hour binary string and store it in dig
                     string dig = hr_binary[i].ToString();
@@ -143,6 +143,13 @@ namespace binaryClock
                     {
                         // create an action for the invoke method
                         Action action = () => checkBox4.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 4 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox11.Checked = true;
                         // use invoke to access gui element from different thread
                         this.Invoke(action);
                     }
