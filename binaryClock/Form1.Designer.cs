@@ -221,7 +221,7 @@
             // 
             this.checkBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(192, 135);
+            this.checkBox14.Location = new System.Drawing.Point(200, 135);
             this.checkBox14.Name = "checkBox14";
             this.checkBox14.Size = new System.Drawing.Size(38, 21);
             this.checkBox14.TabIndex = 27;
@@ -232,7 +232,7 @@
             // 
             this.checkBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(192, 108);
+            this.checkBox15.Location = new System.Drawing.Point(200, 108);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(38, 21);
             this.checkBox15.TabIndex = 26;
@@ -243,7 +243,7 @@
             // 
             this.checkBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox16.AutoSize = true;
-            this.checkBox16.Location = new System.Drawing.Point(184, 81);
+            this.checkBox16.Location = new System.Drawing.Point(200, 81);
             this.checkBox16.Name = "checkBox16";
             this.checkBox16.Size = new System.Drawing.Size(46, 21);
             this.checkBox16.TabIndex = 25;
@@ -254,7 +254,7 @@
             // 
             this.checkBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(184, 54);
+            this.checkBox17.Location = new System.Drawing.Point(200, 54);
             this.checkBox17.Name = "checkBox17";
             this.checkBox17.Size = new System.Drawing.Size(46, 21);
             this.checkBox17.TabIndex = 24;

@@ -45,7 +45,7 @@ namespace binaryClock
 
             // set a sleep var variable to determine how long to sleep in between each iteration
             // initially set to adjust for the current time
-            int sleep_var = 60 - cur_time.Milliseconds;       
+            int sleep_var = 1000 - cur_time.Milliseconds;       
 
             // variables to hold current hour, minutes, and seconds
             int hour = cur_time.Hours;
@@ -85,7 +85,7 @@ namespace binaryClock
                 // convert hrs, mins, and seconds to binary
                 hr_binary = Convert.ToString(hour, 2);
                 min_binary = Convert.ToString(mins, 2);
-                sec_binary = Convert.ToString(mins, 2);
+                sec_binary = Convert.ToString(secs, 2);
 
                 #region append zeros to end of binary numbers if numbers aren't large enough
                 // call append zeros function for hours
@@ -289,6 +289,109 @@ namespace binaryClock
                     {
                         // create an action for the invoke method
                         Action action = () => checkBox5.Checked = false;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    #endregion
+                }
+                #endregion
+
+                #region seconds
+
+                // loop through seconds binary string
+                for (int i = 0; i < 6; i++)
+                {
+                    // get a digit of the seconds binary string and store it in dig
+                    string dig = sec_binary[i].ToString();
+
+                    #region check to see if each checkbox should be on or off
+                    // 32
+                    if (i == 0 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox17.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 0 && dig == "0")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox17.Checked = false;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    // 16
+                    if (i == 1 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox16.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 1 && dig == "0")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox16.Checked = false;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    // 8
+                    if (i == 2 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox15.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 2 && dig == "0")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox15.Checked = false;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    // 4
+                    if (i == 3 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox14.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 3 && dig == "0")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox14.Checked = false;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    // 2
+                    if (i == 4 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox13.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 4 && dig == "0")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox13.Checked = false;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    // 1
+                    if (i == 5 && dig == "1")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox12.Checked = true;
+                        // use invoke to access gui element from different thread
+                        this.Invoke(action);
+                    }
+                    if (i == 5 && dig == "0")
+                    {
+                        // create an action for the invoke method
+                        Action action = () => checkBox12.Checked = false;
                         // use invoke to access gui element from different thread
                         this.Invoke(action);
                     }
