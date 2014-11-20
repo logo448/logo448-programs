@@ -45,7 +45,7 @@ namespace binaryClock
 
             // set a sleep var variable to determine how long to sleep in between each iteration
             // initially set to adjust for the current time
-            int sleep_var = (60 - cur_time.Seconds) * 1000;       
+            int sleep_var = 60 - cur_time.Milliseconds;       
 
             // variables to hold current hour, minutes, and seconds
             int hour = cur_time.Hours;
@@ -61,6 +61,7 @@ namespace binaryClock
             // infinite loop
             while (true)
             {
+                #region get current time
                 // update current time
                 cur_time = DateTime.Now.TimeOfDay;
                 // get current secs
@@ -79,6 +80,7 @@ namespace binaryClock
                     // set the hour
                     hour = cur_time.Hours;
                 }
+                #endregion
 
                 // convert hrs, mins, and seconds to binary
                 hr_binary = Convert.ToString(hour, 2);
@@ -86,31 +88,14 @@ namespace binaryClock
                 sec_binary = Convert.ToString(mins, 2);
 
                 #region append zeros to end of binary numbers if numbers aren't large enough
-                // check to see if min_binary is long enough
-                if (min_binary.Length < 6)
-                {
-                    // find how many more zeros are needed
-                    int zeros_needed = 6 - min_binary.Length;
+                // call append zeros function for hours
+                hr_binary = append_zeros(hr_binary, 5);
 
-                    // add the appropriate amoun of zeros
-                    for (int i = 0; i < zeros_needed; i++)
-                    {
-                        min_binary = "0" + min_binary;
-                    }
-                }
+                // call append zeros function for minutes 
+                min_binary = append_zeros(min_binary, 6);
 
-                // check to see if hr_binary is long enough
-                if (hr_binary.Length < 5)
-                {
-                    // find how many more zeros are needed
-                    int zeros_needed = 5 - hr_binary.Length;
-
-                    // add the appropriate amoun of zeros
-                    for (int i = 0; i < zeros_needed; i++)
-                    {
-                        hr_binary = "0" + hr_binary;
-                    }
-                }
+                // call append zeros function for seconds
+                sec_binary = append_zeros(sec_binary, 6);
                 #endregion
 
                 #region check and uncheck checkboxes
@@ -313,7 +298,7 @@ namespace binaryClock
                 #endregion
 
                 // adjust for the time it took to do the calculations
-                sleep_var = (60 - cur_time.Seconds) * 1000;
+                sleep_var = 1000 - cur_time.Milliseconds;
 
                 // sleep for x seconds
                 Thread.Sleep(sleep_var);
@@ -325,6 +310,39 @@ namespace binaryClock
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// function to append zeros to binary strings if the sting isn't long enough
+        /// two inputs: the binary sting and the desired length
+        /// </summary>
+        /// <param name="bin"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        private string append_zeros(string bin, int len)
+        {
+            // check to see if bin is long enough
+            if (bin.Length < len)
+            {
+                // find how many more zeros are needed
+                int zeros_needed = len - bin.Length;
+
+                // add the appropriate amoun of zeros
+                for (int i = 0; i < zeros_needed; i++)
+                {
+                    bin = "0" + bin;
+                }
+                
+                // return binary string
+                return bin;
+            }
+
+            // if bin is already long enough return bin
+            else
+            {
+                // return binary string
+                return bin;
+            }
         }
     }
 }
