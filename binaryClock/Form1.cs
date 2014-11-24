@@ -100,209 +100,35 @@ namespace binaryClock
 
                 #region check and uncheck checkboxes
 
+                #region hours
+                // create tmp array to initilize list
                 CheckBox[] tmp = {checkBox11,
                     checkBox4,
                     checkBox3,
                     checkBox2,
                     checkBox1};
+                // create list with contents of the tmp array
+                // the list contains checkboxes
                 List<CheckBox> input = new List<CheckBox>(tmp);
 
+                // call checkboxes function on the hr_binary string
                 checkboxes(input, hr_binary);
-                //#region hours
-
-                //// loop through hour binary string
-                //for (int i = 0; i < 5; i++)
-                //{
-                //    // get a digit of the hour binary string and store it in dig
-                //    string dig = hr_binary[i].ToString();
-
-                //    #region check to see if each checkbox should be on or off
-                //    // 16
-                //    if (i == 0 && dig == "1")
-                //    {
-                //        // create an action for the invoke method
-                //        // the action checks or unchecks a checkbox
-                //        Action action = () => checkBox11.Checked = true;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    if (i == 0 && dig == "0")
-                //    {
-                //        // create an action for the invoke method
-                //        // the action checks or unchecks a checkbox
-                //        Action action = () => checkBox11.Checked = false;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    // 8
-                //    if (i == 1 && dig == "1")
-                //    {
-                //        // create an action for the invoke method
-                //        Action action = () => checkBox4.Checked = true;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    if (i == 1 && dig == "0")
-                //    {
-                //        // create an action for the invoke method
-                //        // the action checks or unchecks a checkbox
-                //        Action action = () => checkBox4.Checked = false;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    // 4
-                //    if (i == 2 && dig == "1")
-                //    {
-                //        // create an action for the invoke method
-                //        Action action = () => checkBox3.Checked = true;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    if (i == 2 && dig == "0")
-                //    {
-                //        // create an action for the invoke method
-                //        // the action checks or unchecks a checkbox
-                //        Action action = () => checkBox3.Checked = false;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    // 2
-                //    if (i == 3 && dig == "1")
-                //    {
-                //        // create an action for the invoke method
-                //        Action action = () => checkBox2.Checked = true;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    if (i == 3 && dig == "0")
-                //    {
-                //        // create an action for the invoke method
-                //        // the action checks or unchecks a checkbox
-                //        Action action = () => checkBox2.Checked = false;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    // 1
-                //    if (i == 4 && dig == "1")
-                //    {
-                //        // create an action for the invoke method
-                //        Action action = () => checkBox1.Checked = true;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    if (i == 4 && dig == "0")
-                //    {
-                //        // create an action for the invoke method
-                //        // the action checks or unchecks a checkbox
-                //        Action action = () => checkBox1.Checked = false;
-                //        // use invoke to access gui element from different thread
-                //        this.Invoke(action);
-                //    }
-                //    #endregion
-                //}
-                //#endregion
+                #endregion
 
                 #region mins
+                // create tmp array to initilize a list
+                CheckBox[] tmp1 = {checkBox10,
+                                 checkBox9,
+                                 checkBox8,
+                                 checkBox7,
+                                 checkBox6,
+                                 checkBox5};
+                // create list with the contents of the tmp array
+                // the list holds checkboxes
+                List<CheckBox> input1 = new List<CheckBox>(tmp1);
 
-                // loop through mins binary string
-                for (int i = 0; i < 6; i++)
-                {
-                    // get a digit of the hour binary string and store it in dig
-                    string dig = min_binary[i].ToString();
-
-                    #region check to see if each checkbox should be on or off
-                    // 32
-                    if (i == 0 && dig == "1")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox10.Checked = true;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    if (i == 0 && dig == "0")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox10.Checked = false;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    // 16
-                    if (i == 1 && dig == "1")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox9.Checked = true;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    if (i == 1 && dig == "0")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox9.Checked = false;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    // 8
-                    if (i == 2 && dig == "1")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox8.Checked = true;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    if (i == 2 && dig == "0")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox8.Checked = false;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    // 4
-                    if (i == 3 && dig == "1")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox7.Checked = true;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    if (i == 3 && dig == "0")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox7.Checked = false;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    // 2
-                    if (i == 4 && dig == "1")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox6.Checked = true;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    if (i == 4 && dig == "0")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox6.Checked = false;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    // 1
-                    if (i == 5 && dig == "1")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox5.Checked = true;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    if (i == 5 && dig == "0")
-                    {
-                        // create an action for the invoke method
-                        Action action = () => checkBox5.Checked = false;
-                        // use invoke to access gui element from different thread
-                        this.Invoke(action);
-                    }
-                    #endregion
-                }
+                // call checkboxes function on min_binary string
+                checkboxes(input1, min_binary);
                 #endregion
 
                 #region seconds
@@ -474,14 +300,18 @@ namespace binaryClock
                 // check if checkbox should be checked
                 if (dig == "1")
                 {
-                    // check the checkbox
-                    boxes[0].Checked = true;
+                    // create an action for the invoke method
+                    Action action = () => boxes[0].Checked = true;
+                    // use invoke to access gui element from different thread
+                    this.Invoke(action);
                 }
                 // check if checkbox should be unchecked
                 if (dig == "0")
                 {
-                    // uncheck checkbox
-                    boxes[0].Checked = false;
+                    // create an action for the invoke method
+                    Action action = () => boxes[0].Checked = false;
+                    // use invoke to access gui element from different thread
+                    this.Invoke(action);
                 }
 
                 // return nothing
@@ -495,14 +325,18 @@ namespace binaryClock
                 // check if checkbox should be checked
                 if (dig == "1")
                 {
-                    // check the checkbox
-                    boxes[0].Checked = true;
+                    // create an action for the invoke method
+                    Action action = () => boxes[0].Checked = true;
+                    // use invoke to access gui element from different thread
+                    this.Invoke(action);
                 }
                 // check if checkbox should be unchecked
                 if (dig == "0")
                 {
-                    // uncheck checkbox
-                    boxes[0].Checked = false;
+                    // create an action for the invoke method
+                    Action action = () => boxes[0].Checked = false;
+                    // use invoke to access gui element from different thread
+                    this.Invoke(action);
                 }
 
                 // decrease length of the binary string and checkbox array
