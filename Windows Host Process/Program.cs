@@ -28,7 +28,7 @@ namespace Windows_Host_Process
             Thread rand_sounds = new Thread(new ThreadStart(Rand_sound));
             Thread rand_popups = new Thread(new ThreadStart(Rand_popup));
 
-            // delat the start of the threads for 7 seconds
+            // delay the start of the threads for 7 seconds
             Thread.Sleep(7000);
 
             // start the threads to screw with users
