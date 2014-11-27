@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Prime_Generator_Beta_V1
 {
-<<<<<<< HEAD
     public static class generate_primes
     {
         /// <summary>
@@ -20,7 +19,7 @@ namespace Prime_Generator_Beta_V1
         public static List<int> start_generate(int end)
         {
             // create variable for potential primes
-            int pp = 2; 
+            int pp = 2;
 
             // variable to hold prime that isn't necessary for testing other pps
             int no_test_primes = pp;
@@ -35,7 +34,7 @@ namespace Prime_Generator_Beta_V1
 
             // create variable to hold square root of pp
             double pp_sqrt;
-            
+
             // boolean switch to see if pp should be added to tp
             bool bool_switch = true;
 
@@ -78,10 +77,5 @@ namespace Prime_Generator_Beta_V1
             // return a list of all the primes
             return tp;
         }
-=======
-    public class generate
-    {
-
->>>>>>> fa4e697e8112f118e4a1a4a2ee90e8c80ba7f485
     }
 }

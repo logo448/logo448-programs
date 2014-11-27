@@ -13,7 +13,7 @@ namespace Library_class_test
         static void Main(string[] args)
         {
 
-            Console.WriteLine(generate_primes.start_generate(100000000).Capacity);
+            Console.WriteLine(generate_primes.start_generate(1000).Capacity);
         }
     }
 }
