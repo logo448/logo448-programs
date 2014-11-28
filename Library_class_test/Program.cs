@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Diagnostics;
+
 using Prime_Generator_Beta_V1;
 
 namespace Library_class_test
@@ -12,8 +14,11 @@ namespace Library_class_test
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine(generate_primes.start_generate(1000).Capacity);
+            Stopwatch stp = new Stopwatch();
+            stp.Start();
+            Console.WriteLine(generate_primes.start_generate(100000000).Capacity);
+            stp.Stop();
+            Console.WriteLine(stp.ElapsedMilliseconds);
         }
     }
 }
