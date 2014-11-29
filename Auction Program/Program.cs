@@ -135,17 +135,15 @@ namespace Auction_Program
 
                 if (error_count > 0)
                 {
-                    Console.WriteLine("in");
                     for (int i = 0; i < error_count * 2; i++)
                     {
-                        Console.SetCursorPosition(0, (start + (error_count * 2)) - i);
+                        Console.SetCursorPosition(0, (start - i));
                         Console.Write(new string(' ', Console.BufferWidth));
                     }
                 }
 
                 // return the bid
                 return bid;
-
             }
             // else
             else
