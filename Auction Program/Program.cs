@@ -32,10 +32,8 @@ namespace Auction_Program
             // call function to convert starting_price to int and assing in to new variable
             int starting_price = get_input("What do you want the starting price to be, Sir?: ", 0);
 
-            // create, set as background, and run a thread that checks to see if bid was changed
-            Thread I_got_x = new Thread(new ThreadStart(i_got_x));
-            I_got_x.IsBackground = true;
-            I_got_x.Start();
+            // variable to hold the synth.speak "i got" method call
+            string tmp;
             #endregion
 
             // infinite loop
@@ -70,6 +68,11 @@ namespace Auction_Program
 
                 // check to see if the bid was over the previous bid
                 _bid = bid_over_prev(_bid, _prev, 0);
+
+                // plays an audio clip saying I got and then the bid
+                _synth.Rate = 4;
+                tmp = string.Format("I got {0}", _bid);
+                _synth.Speak(tmp);
             }
         }
 
@@ -174,34 +177,6 @@ namespace Auction_Program
                 return bid_over_prev(bid, prev, ++error_count);
             }
             
-        }
-
-        static void i_got_x()
-        {
-            // bool switch variable
-            bool bool_switch = true;
-
-            // initiliaze variable to hold the string for _synth.speak
-            string tmp;
-
-            // infinite loop
-            while (true)
-            {
-                // a toggle
-                if (_prev == _bid && !bool_switch)
-                {
-
-                    bool_switch = true;
-                }
-
-                if (_prev < _bid && bool_switch)
-                {
-                    _synth.Rate = 4;
-                    tmp = string.Format("I got {0}", _bid);
-                    _synth.Speak(tmp);
-                    bool_switch = false;
-                }
-            }
         }
     }
 }
