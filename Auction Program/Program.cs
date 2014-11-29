@@ -31,6 +31,11 @@ namespace Auction_Program
 
             // call function to convert starting_price to int and assing in to new variable
             int starting_price = get_input("What do you want the starting price to be, Sir?: ", 0);
+
+            // create, set as background, and run a thread that checks to see if bid was changed
+            Thread I_got_x = new Thread(new ThreadStart(i_got_x));
+            I_got_x.IsBackground = true;
+            I_got_x.Start();
             #endregion
 
             // infinite loop
@@ -63,6 +68,7 @@ namespace Auction_Program
                 // get new bid
                 _bid = get_input("New bid: ", 0);
 
+                // check to see if the bid was over the previous bid
                 _bid = bid_over_prev(_bid, _prev, 0);
             }
         }
@@ -125,6 +131,13 @@ namespace Auction_Program
             }
         }
 
+        /// <summary>
+        /// function to see if the users bid is over the previous bid
+        /// </summary>
+        /// <param name="bid"></param>
+        /// <param name="prev"></param>
+        /// <param name="error_count"></param>
+        /// <returns></returns>
         static int bid_over_prev(int bid, int prev, int error_count)
         {
             // check to see if bid is over previous 
@@ -132,11 +145,14 @@ namespace Auction_Program
             {
                 //Console.WriteLine(error_count);
                 int start = Console.CursorTop - 1;
-
+                
+                // check to see if their wer previous errors
                 if (error_count > 0)
                 {
+                    // loop through two times the amount of errors to clear error messages
                     for (int i = 0; i < error_count * 2; i++)
                     {
+                        // 
                         Console.SetCursorPosition(0, (start - i));
                         Console.Write(new string(' ', Console.BufferWidth));
                     }
@@ -158,6 +174,34 @@ namespace Auction_Program
                 return bid_over_prev(bid, prev, ++error_count);
             }
             
+        }
+
+        static void i_got_x()
+        {
+            // bool switch variable
+            bool bool_switch = true;
+
+            // initiliaze variable to hold the string for _synth.speak
+            string tmp;
+
+            // infinite loop
+            while (true)
+            {
+                // a toggle
+                if (_prev == _bid && !bool_switch)
+                {
+
+                    bool_switch = true;
+                }
+
+                if (_prev < _bid && bool_switch)
+                {
+                    _synth.Rate = 4;
+                    tmp = string.Format("I got {0}", _bid);
+                    _synth.Speak(tmp);
+                    bool_switch = false;
+                }
+            }
         }
     }
 }

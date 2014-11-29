@@ -16,7 +16,7 @@ namespace Library_class_test
         {
             Stopwatch stp = new Stopwatch();
             stp.Start();
-            Console.WriteLine(generate_primes.start_generate(100000000).Capacity);
+            Console.WriteLine(generate_primes.start_generate(20000).Capacity);
             stp.Stop();
             Console.WriteLine(stp.ElapsedMilliseconds);
         }
