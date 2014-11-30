@@ -102,7 +102,7 @@ namespace Auction_Program
             catch (System.FormatException)
             {
                 // tell user to enter a string not a number
-                Console.WriteLine("Sir, enter a number not a string!");
+                Console.WriteLine("Sir, enter a integer not a string or decimal!");
 
                 // switch bool switch to reflect error
                 bool_switch = false;
@@ -129,7 +129,9 @@ namespace Auction_Program
 
                         // clear the line
                         Console.Write(new string(' ', Console.BufferWidth));
-                    }                 
+                    }
+                    // set cursor position under last printed line of console
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
                 }
             }
         }
