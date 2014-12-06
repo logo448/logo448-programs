@@ -11,6 +11,7 @@ namespace Auction_Program
 {
     class Program
     {
+        #region create global vars/obj's
         // create a global sythesizer
          static SpeechSynthesizer _synth = new SpeechSynthesizer();
 
@@ -22,6 +23,7 @@ namespace Auction_Program
 
         // global var to hold previous bid
         static int _prev = 0;
+        #endregion
 
         static void Main(string[] args)
         {
@@ -80,7 +82,9 @@ namespace Auction_Program
         /// function to get user input and output it as an int
         /// </summary>
         /// <param name="msg"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// returns an integer that represents a users bid
+        /// </returns>
         static int get_input(string print_msg, int error_count)
         {
             // ask the user for input
@@ -123,7 +127,6 @@ namespace Auction_Program
                     // execute this loop once for every line I want deleted
                     for (int i = 0; i < error_count * 2; i++)
                     {
-                        //Console.WriteLine(start + (error_count * 2));
                         // set cursor at the beggining of the extra line nearest the bottom
                         Console.SetCursorPosition(0, (start - i));
 
@@ -142,13 +145,14 @@ namespace Auction_Program
         /// <param name="bid"></param>
         /// <param name="prev"></param>
         /// <param name="error_count"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// returns an integer that represents the bid
+        /// </returns>
         static int bid_over_prev(int bid, int prev, int error_count)
         {
             // check to see if bid is over previous 
             if (bid > prev)
             {
-                //Console.WriteLine(error_count);
                 int start = Console.CursorTop - 1;
                 
                 // check to see if their wer previous errors
@@ -157,8 +161,9 @@ namespace Auction_Program
                     // loop through two times the amount of errors to clear error messages
                     for (int i = 0; i < error_count * 2; i++)
                     {
-                        // 
+                        // set cursor position at the end of the line to be cleared
                         Console.SetCursorPosition(0, (start - i));
+                        // clear the line of text were the cursor was located
                         Console.Write(new string(' ', Console.BufferWidth));
                     }
                 }
@@ -179,6 +184,14 @@ namespace Auction_Program
                 return bid_over_prev(bid, prev, ++error_count);
             }
             
+        }
+
+        /// <summary>
+        /// function that uses global bid variable to call for another bid
+        /// </summary>
+        static void chant()
+        {
+
         }
     }
 }
