@@ -14,6 +14,10 @@ namespace helloWorld
         // this is the main function
         static void Main(string[] args)
         {
+            // playing around with text to speech
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+            synth.Rate = 4;
+            synth.Speak("give me 4");
             // loop through string test
             string test = "hello";
             char[] tmp_array = test.ToCharArray();
@@ -56,9 +60,6 @@ namespace helloWorld
                     Console.WriteLine("loser");
                     break;
             }
-            // playing around with text to speech
-            SpeechSynthesizer synth = new SpeechSynthesizer();
-            synth.Speak("hello world");
         }
         // a function to do math!
         static void foobar()
