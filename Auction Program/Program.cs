@@ -23,6 +23,12 @@ namespace Auction_Program
 
         // global var to hold previous bid
         static int _prev = 0;
+
+        // global bool switch to see if it is okay to abort Chant thread
+        static bool _can_abort = true;
+
+        // create a manual reset event to start and stop threads
+        static ManualResetEvent _mre = new ManualResetEvent(true);
         #endregion
 
         static void Main(string[] args)
@@ -36,6 +42,11 @@ namespace Auction_Program
 
             // variable to hold the synth.speak "i got" method call
             string tmp;
+
+            // create thread that starts the auctioners chant
+            Thread Chant = new Thread(new ThreadStart(chant));
+            // start Chant thread
+            Chant.Start();
             #endregion
 
             // infinite loop
@@ -71,10 +82,23 @@ namespace Auction_Program
                 // check to see if the bid was over the previous bid
                 _bid = bid_over_prev(_bid, _prev, 0);
 
-                // plays an audio clip saying I got and then the bid
+                // loop untill I can safely close Chant thread
+                while (!_can_abort)
+                {
+                    // wait one tenth of a second to check if thread can be closed safely
+                    Thread.Sleep(100);
+                }
+
+                // pause the chant thread
+                _mre.Reset();
+
+                // plays an audio clip saying "I got" and then the bid
                 _synth.Rate = 4;
                 tmp = string.Format("I got {0}", _bid);
                 _synth.Speak(tmp);
+
+                // restart the Chant thread
+                _mre.Set();
             }
         }
 
@@ -94,7 +118,7 @@ namespace Auction_Program
             string msg = Console.ReadLine();
 
             // bool switch to see if no exception is thrown
-            bool bool_switch = true;
+            bool no_exception = true;
 
             // error handling
             try
@@ -109,7 +133,7 @@ namespace Auction_Program
                 Console.WriteLine("Sir, enter a integer not a string or decimal!");
 
                 // switch bool switch to reflect error
-                bool_switch = false;
+                no_exception = false;
 
                 // recall function
                 return get_input(print_msg, ++error_count);
@@ -119,7 +143,7 @@ namespace Auction_Program
             {
                 // if no error was thrown this time but their was an error in a prior call and this function call was for the 
                 // new bid, clear the prompts to enter an integer
-                if (bool_switch && error_count >= 1)
+                if (no_exception && error_count >= 1)
                 {
                     // get the starting column of the cursor
                     int start = Console.CursorTop - 1;
@@ -191,7 +215,39 @@ namespace Auction_Program
         /// </summary>
         static void chant()
         {
+            // array of strings with possible chants 
+            string[] poss_chants = { "give me ", "able to bid ", "how bout " };
 
+            // local copy of _bid that is one ahead of _bid
+            int bid = _bid + 1;
+
+            // infinite while loop
+            while (true)
+            {
+                // reset value of bid to _bid + 1
+                bid = _bid + 1;
+
+                // get a random digit from _rand and assign it to rand
+                int rand = _rand.Next(0, 3);
+
+                // set the abort switch to false so the program doesn't get interrupted
+                _can_abort = false;
+
+                // set _synth to four times normal
+                _synth.Rate = 4;
+
+                // say one of the random phrases twice 
+                _synth.Speak(poss_chants[rand] + bid.ToString());
+                _synth.Speak(poss_chants[rand] + bid.ToString());
+
+                // set the abort switch back to true so the thread can be aborted
+                _can_abort = true;
+
+                // check to see if thread should be paused
+                _mre.WaitOne();
+
+                Thread.Sleep(200);
+            }
         }
     }
 }
