@@ -15,9 +15,10 @@ namespace helloWorld
         static void Main(string[] args)
         {
             // playing around with text to speech
+            string ugh = "give me ";
             SpeechSynthesizer synth = new SpeechSynthesizer();
             synth.Rate = 4;
-            synth.Speak("give me 4");
+            synth.Speak(ugh + '5');
             // loop through string test
             string test = "hello";
             char[] tmp_array = test.ToCharArray();
