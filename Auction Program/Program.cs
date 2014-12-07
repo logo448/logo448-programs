@@ -24,11 +24,11 @@ namespace Auction_Program
         // global var to hold previous bid
         static int _prev = 0;
 
-        // global bool switch to see if it is okay to abort Chant thread
-        static bool _can_abort = true;
-
-        // create a manual reset event to start and stop threads
+        // create a global manual reset event to start and stop threads
         static ManualResetEvent _mre = new ManualResetEvent(true);
+
+        // global bool switch indicating whether it is a new chant cycle
+        static bool _new_chant = true;
         #endregion
 
         static void Main(string[] args)
@@ -82,13 +82,6 @@ namespace Auction_Program
                 // check to see if the bid was over the previous bid
                 _bid = bid_over_prev(_bid, _prev, 0);
 
-                // loop untill I can safely close Chant thread
-                while (!_can_abort)
-                {
-                    // wait one tenth of a second to check if thread can be closed safely
-                    Thread.Sleep(100);
-                }
-
                 // pause the chant thread
                 _mre.Reset();
 
@@ -99,6 +92,9 @@ namespace Auction_Program
 
                 // restart the Chant thread
                 _mre.Set();
+
+                // switch _new_chant to true so a new string will be spoken
+                _new_chant = true;
             }
         }
 
@@ -221,32 +217,33 @@ namespace Auction_Program
             // local copy of _bid that is one ahead of _bid
             int bid = _bid + 1;
 
+            // initialize variable to hold random digit
+            int rand = 0;
+
             // infinite while loop
             while (true)
             {
+                // check to see if it is a new chant
+                if (_new_chant)
+                {
+                    // get a random digit from _rand and assign it to rand
+                    rand = _rand.Next(0, 3);
+
+                    // set _new_chant to false
+                    _new_chant = false;
+                }
+
                 // reset value of bid to _bid + 1
                 bid = _bid + 1;
-
-                // get a random digit from _rand and assign it to rand
-                int rand = _rand.Next(0, 3);
-
-                // set the abort switch to false so the program doesn't get interrupted
-                _can_abort = false;
 
                 // set _synth to four times normal
                 _synth.Rate = 4;
 
                 // say one of the random phrases twice 
                 _synth.Speak(poss_chants[rand] + bid.ToString());
-                _synth.Speak(poss_chants[rand] + bid.ToString());
-
-                // set the abort switch back to true so the thread can be aborted
-                _can_abort = true;
 
                 // check to see if thread should be paused
                 _mre.WaitOne();
-
-                Thread.Sleep(200);
             }
         }
     }
