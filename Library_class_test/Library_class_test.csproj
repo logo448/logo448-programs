@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BenchmarkIt">
-      <HintPath>packages\Benchmark.It.1.1.1\lib\BenchmarkIt.dll</HintPath>
+    <Reference Include="ICFCE">
+      <HintPath>..\ICFCE\bin\Debug\ICFCE.dll</HintPath>
     </Reference>
     <Reference Include="Prime_Generator_Beta_V1">
       <HintPath>..\Prime_Generator_Beta_V1\obj\Debug\Prime_Generator_Beta_V1.dll</HintPath>
