@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ConsoleHotKey">
+      <HintPath>..\ConsoleHotKey\bin\Debug\ConsoleHotKey.dll</HintPath>
+    </Reference>
     <Reference Include="ICFCE">
       <HintPath>..\ICFCE\bin\Debug\ICFCE.dll</HintPath>
     </Reference>
@@ -40,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
