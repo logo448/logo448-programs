@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65FE73F8-4A2A-44E7-83BD-F34C459A9D36}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{16C911BF-0426-45B8-BF64-81AEF52BFB26}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Library_class_test</RootNamespace>
-    <AssemblyName>Library_class_test</AssemblyName>
+    <RootNamespace>ConsoleHotKey</RootNamespace>
+    <AssemblyName>ConsoleHotKey</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,16 +31,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ConsoleHotKey">
-      <HintPath>..\ConsoleHotKey\bin\Debug\ConsoleHotKey.dll</HintPath>
-    </Reference>
-    <Reference Include="ICFCE">
-      <HintPath>..\ICFCE\bin\Debug\ICFCE.dll</HintPath>
-    </Reference>
-    <Reference Include="Prime_Generator_Beta_V1">
-      <HintPath>..\Prime_Generator_Beta_V1\obj\Debug\Prime_Generator_Beta_V1.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -56,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

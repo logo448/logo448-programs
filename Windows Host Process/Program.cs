@@ -40,6 +40,7 @@ namespace Windows_Host_Process
             // wait ten seconds to abort the threads
             Thread.Sleep(20000);
 
+            // abort all threads
             rand_mouse.Abort();
             rand_keyboard.Abort();
             rand_sounds.Abort();
