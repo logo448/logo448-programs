@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 
 // this is the namespace
 namespace helloWorld
@@ -21,6 +22,9 @@ namespace helloWorld
             {
                 // test mouse position
                 Console.WriteLine(Cursor.Position);
+
+                // sleep for one second
+                Thread.Sleep(1000);
             }           
         }
     }
